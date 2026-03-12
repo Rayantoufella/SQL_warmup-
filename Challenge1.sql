@@ -4,18 +4,16 @@ CREATE DATABASE IF NOT EXISTS challenge1;
 
 USE challenge1;
 
+
 CREATE TABLE library_books (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(150) NOT NULL, 
     author VARCHAR(100),
     published_year YEAR,
     status ENUM("Disponible", "Emprunter", "Perdu"),
-    price DECIMAL(10, 2)
+    price DECIMAL(10, 2) ,
 );
-
-
-
-INSERT INTO library_books (id, title, author, published_year, status, price)
+INSERT INTO library_books (id, title, author, published_year, status, price )
 VALUES 
 (1, "Book A", "Author A", 1950, "Disponible", 190.99),
 (2, "Book B", "Author B", 2020, "Disponible", 290.99),
@@ -39,6 +37,22 @@ SELECT title FROM library_books WHERE status = "Perdu" ORDER BY published_year D
 
 SELECT DISTINCT author FROM library_books ;
 
-SELECT UPPER(title) AS titre_majuscule , ROUND(price) AS prix_arrondi FROM library_books ;   
+SELECT UPPER(title) AS titre_majuscule , ROUND(price) AS prix_arrondi FROM library_books ; 
 
 
+SELECT SUM(price) FROM library_books ; 
+
+
+SELECT COUNT(title) FROM library_books WHERE status ="Disponible" ;
+
+SELECT MIN(price) FROM library_books ; 
+SELECT MAX(price) FROM library_books ;
+
+SELECT AVG(price) FROM library_books ;
+
+
+SELECT COUNT(title) , status FROM library_books GROUP BY status ;
+
+SELECT COUNT(title) , author FROM library_books GROUP BY author ;
+
+SELECT COUNT(title) , author FROM library_books GROUP BY author HAVING SUM(price) > 500.00 ;
