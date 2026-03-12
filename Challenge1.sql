@@ -33,15 +33,12 @@ SELECT title , price FROM library_books WHERE price BETWEEN 100 AND 300 ;
 
 SELECT title , published_year FROM library_books WHERE published_year >= 2020 ;
 
--- Afficher les titres en MAJUSCULE et le prix arrondi
-SELECT UPPER(title) AS titre_majuscule, ROUND(price) AS prix_arrondi FROM library_books;
-
 SELECT title FROM library_books WHERE title LIKE "%PHP%" ;
-    
+
 SELECT title FROM library_books WHERE status = "Perdu" ORDER BY published_year DESC ;
 
 SELECT DISTINCT author FROM library_books ;
 
-SELECT title FROM library_books WHERE UPPER(title) ;
+SELECT UPPER(title) AS titre_majuscule , ROUND(price) AS prix_arrondi FROM library_books ;   
 
 
